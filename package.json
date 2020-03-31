@@ -16,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/rijinmk/njs-covid-19/issues"
   },
-  "homepage": "https://github.com/rijinmk/njs-covid-19#readme"
+  "homepage": "https://github.com/rijinmk/njs-covid-19#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "hbs": "^4.1.0",
+    "request": "^2.88.2",
+    "requests": "^0.3.0"
+  }
 }

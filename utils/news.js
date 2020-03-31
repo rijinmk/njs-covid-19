@@ -39,8 +39,8 @@ let news = (country, callback) => {
         }); 
     }else{
         console.log(`File exists, Sending the JSON file`);
-        let country_news = fs.readFileSync(country_news_today_file);
-        callback(null, JSON.parse(country_news).body.articles); 
+        let country_news = fs.readFileSync(country_news_today_file).toString();
+        callback(null, JSON.parse(country_news)); 
     }
 
 }

@@ -2,12 +2,14 @@ const express = require('express');
 const hbs = require('hbs');
 const covid = require('./utils/covid'); 
 const news = require('./utils/news');
+var cors = require('cors');
 
 const app = express();
 const PORT = 3000 || process.env.PORT; 
 
 // Public folder
 app.use(express.static('public'));
+app.use(cors());
 
 // Handlebars setup
 app.set('view engine', 'hbs');

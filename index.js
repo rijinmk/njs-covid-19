@@ -35,7 +35,7 @@ app.get('/news', function(req, res){
             error: "Please provide a country."
         }); 
     }
-}); 
+});
 
 app.listen(PORT, () => {
     console.log(`Listening on PORT ${PORT}`);

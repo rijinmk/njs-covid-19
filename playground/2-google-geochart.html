@@ -5,38 +5,57 @@
         integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
-
-        let covid; 
-        let news = []; 
+        let covid;
+        let news = {};
         $.get({
-            url: 'http://localhost:3000/covid', 
+            url: 'http://localhost:3000/covid',
             success: (data) => {
-                covid = data.data; 
-                let countries = data.countries; 
+                covid = data.data;
+                let countries = data.countries;
                 // renderMaps(covid);
-                for(i in countries){
-                    console.log(countries[i]);
-                    $.get({
-                        url: `http://localhost:3000/news?country=${countries[i]}`,
-                        success: (data) => {
-                            news.push(data);
-                        }
-                    })
+
+                let whenCalls = ``
+
+                for (let i in countries) {
+                    whenCalls += `
+                        $.get({
+                            url: "http://localhost:3000/news?country=${countries[i]}",
+                            success: (data) => {
+                                try{
+                                    news["${countries[i]}"] = {img: data[0].urlToImage, desc:data[0].title};
+                                }catch(e){
+                                    news["${countries[i]}"] = "";
+                                }
+                            }
+                        }),`
                 }
+
+                whenCalls = whenCalls.slice(0,-1);
+                // console.log(whenCalls);
+
+                $.when(
+                    eval(whenCalls)
+                ).then(() => {
+                    renderMaps(covid, news);
+                });
 
             }
         });
 
-        let si = setInterval(() => {
-            console.log(news.length);
-            if(news.length > 50){
-                clearInterval(si);
-                renderMaps(covid); 
+        function renderMaps(covid) {
+            // console.log(covid, news);
+            console.log("------------------------------------"); 
+            console.log(covid); 
+            console.log("------------------------------------"); 
+            console.log(news); 
+            console.log("------------------------------------"); 
+            for(let i=1; i<covid.length-1; i++){
+                covid[i][2] = ''; 
+                try{
+                    covid[i][2] += `<img src="${news[covid[i][0]].img}" width="250px"/>`;
+                }catch(e){}
+                covid[i][2] += `<p>${news[covid[i][0]].desc}</p>`;
             }
-        }, 100); 
-
-        function renderMaps(covid){
-            console.log(covid, news);
             google.charts.load('current', {
                 'packages': ['geochart'],
                 // Note: you will need to get a mapsApiKey for your project.
@@ -48,20 +67,27 @@
             function drawRegionsMap() {
                 var data = google.visualization.arrayToDataTable(covid);
                 let colors = ["#000000",
-                "#FF0000","#FF1000","#FF2000","#FF3000","#FF4000","#FF5000","#FF6000","#FF7000","#FF8000","#FF9000","#FFA000","#FFB000","#FFC000","#FFD000","#FFE000","#FFF000","#FFFF00"
-                ,"#F0FF00","#E0FF00","#D0FF00","#C0FF00","#B0FF00","#A0FF00","#90FF00","#80FF00","#70FF00","#60FF00","#50FF00","#40FF00"];
-
+                    "#FF0000", "#FF1000", "#FF2000", "#FF3000", "#FF4000", "#FF5000", "#FF6000", "#FF7000",
+                    "#FF8000", "#FF9000", "#FFA000", "#FFB000", "#FFC000", "#FFD000", "#FFE000", "#FFF000",
+                    "#FFFF00", "#F0FF00", "#E0FF00", "#D0FF00", "#C0FF00", "#B0FF00", "#A0FF00", "#90FF00",
+                    "#80FF00", "#70FF00", "#60FF00", "#50FF00", "#40FF00"
+                ];
 
                 var options = {};
                 // options['region'] = 'US';
                 // options['resolution'] = 'provinces';
-                options['colorAxis'] = { minValue : 100, maxValue : 100000, colors :
-                colors.reverse()};
+                options['colorAxis'] = {
+                    minValue: 100,
+                    maxValue: 100000,
+                    colors: colors.reverse()
+                };
                 options['backgroundColor'] = '#FFFFFF';
                 options['datalessRegionColor'] = '#E5E5E5';
                 options['width'] = 556;
                 options['height'] = 347;
-                options.tooltip = { isHtml: true };
+                options.tooltip = {
+                    isHtml: true
+                };
 
                 var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
 
@@ -69,6 +95,12 @@
             }
         }
     </script>
+
+    <style>
+        .google-visualization-tooltip-item {
+            width:300px;
+        }
+    </style>
 </head>
 
 <body>

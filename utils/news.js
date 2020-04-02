@@ -1,8 +1,15 @@
-let request = require('request');
+const request = require('request');
 const fs = require('fs'); 
+// const sleep = require('sleep'); 
 // https://newsapi.org/v2/everything?q=uae+coronavirus&apiKey=58d998d42a354f8e99deca813afa69aa&language=en
 
-let news = (country, callback) => {
+function sleep(millis) {
+    return new Promise(resolve => setTimeout(resolve, millis));
+}
+
+let news = async (country, callback) => {
+    // sleep.sleep(0.2); 
+    await sleep(700); 
     let date = new Date(); 
     let year = date.getFullYear(); 
     let month = date.getMonth() + 1; 

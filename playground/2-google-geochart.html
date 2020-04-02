@@ -6,13 +6,14 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
 
+        let covid; 
+        let news = []; 
         $.get({
             url: 'http://localhost:3000/covid', 
             success: (data) => {
-                let covid = data.data; 
+                covid = data.data; 
                 let countries = data.countries; 
                 // renderMaps(covid);
-                let news = [];  
                 for(i in countries){
                     console.log(countries[i]);
                     $.get({
@@ -22,14 +23,20 @@
                         }
                     })
                 }
-                setInterval(() => {
-                    console.log(news.length); 
-                }, 100);
+
             }
         });
 
+        let si = setInterval(() => {
+            console.log(news.length);
+            if(news.length > 50){
+                clearInterval(si);
+                renderMaps(covid); 
+            }
+        }, 100); 
 
         function renderMaps(covid){
+            console.log(covid, news);
             google.charts.load('current', {
                 'packages': ['geochart'],
                 // Note: you will need to get a mapsApiKey for your project.

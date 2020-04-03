@@ -1,3 +1,19 @@
+// Toggle Switch
+const wrapper = document.querySelector('.wrapper');
+const para = document.querySelector('p')
+
+wrapper.addEventListener('change', function (e) {
+    if (e.target.checked) {
+        para.classList.add('morning');
+        para.textContent = 'Morning, Sunshine!';
+        $('html').removeClass('dark');
+    } else {
+        para.classList.remove('morning');
+        para.textContent = 'Good Night!';
+        $('html').addClass('dark');
+    }
+})
+
 let covid;
 let news = {};
 $.get({
@@ -119,19 +135,3 @@ function renderMaps(covid) {
         chart.draw(data, options);
     }
 }
-
-// Toggle Switch
-const wrapper = document.querySelector('.wrapper');
-const para = document.querySelector('p')
-
-wrapper.addEventListener('change', function (e) {
-    if (e.target.checked) {
-        para.classList.add('morning');
-        para.textContent = 'Morning, Sunshine!';
-        $('html').removeClass('dark');
-    } else {
-        para.classList.remove('morning');
-        para.textContent = 'Good Night!';
-        $('html').addClass('dark');
-    }
-})

@@ -15,7 +15,7 @@ $.get({
                             url: "/news?country=${countries[i]}",
                             success: (data) => {
                                 try{
-                                    news["${countries[i]}"] = {img: data[0].urlToImage, desc:data[0].title};
+                                    news["${countries[i]}"] = {img: data[0].urlToImage, desc:data[${Math.floor(Math.random() * 10)}].title};
                                 }catch(e){
                                     news["${countries[i]}"] = "";
                                 }

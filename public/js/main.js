@@ -112,7 +112,7 @@ function renderMaps(covid) {
         options.tooltip = {
             isHtml: true
         };
-        options.legend = 'none'; 
+        // options.legend = 'none'; 
 
         var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
 

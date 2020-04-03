@@ -128,8 +128,10 @@ wrapper.addEventListener('change', function (e) {
     if (e.target.checked) {
         para.classList.add('morning');
         para.textContent = 'Morning, Sunshine!';
+        $('html').removeClass('dark');
     } else {
         para.classList.remove('morning');
         para.textContent = 'Good Night!';
+        $('html').addClass('dark');
     }
 })

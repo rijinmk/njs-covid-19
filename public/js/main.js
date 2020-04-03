@@ -112,10 +112,24 @@ function renderMaps(covid) {
         options.tooltip = {
             isHtml: true
         };
-        options.legend = 'none'; 
+        // options.legend = 'none'; 
 
         var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
 
         chart.draw(data, options);
     }
 }
+
+// Toggle Switch
+const wrapper = document.querySelector('.wrapper');
+const para = document.querySelector('p')
+
+wrapper.addEventListener('change', function (e) {
+    if (e.target.checked) {
+        para.classList.add('morning');
+        para.textContent = 'Morning, Sunshine!';
+    } else {
+        para.classList.remove('morning');
+        para.textContent = 'Good Night!';
+    }
+})

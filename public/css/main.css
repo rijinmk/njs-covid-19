@@ -62,6 +62,10 @@ h6{
 }
 
 /* Toggle Switch */
+.wrapper-toggle{
+    margin-top:20px;
+}
+
 .wrapper-toggle.dark{
     filter:invert(1);
 }

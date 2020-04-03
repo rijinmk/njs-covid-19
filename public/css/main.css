@@ -4,7 +4,7 @@ h1, h6{
 
 html.dark{
     filter:invert(1);
-    background:#111;
+    background:#000000;
 }
 
 h1{
@@ -29,6 +29,10 @@ h6{
 
 .titles{
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .titles img{
@@ -53,7 +57,15 @@ h6{
     background-size: cover;
 }
 
+.google-visualization-tooltip-item .news-image.toggle{
+    filter: invert(0);
+}
+
 /* Toggle Switch */
+.wrapper-toggle.dark{
+    filter:invert(0);
+}
+
 #hide-checkbox {
     opacity: 0;
     height: 0;

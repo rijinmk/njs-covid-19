@@ -119,3 +119,9 @@ function renderMaps(covid) {
         chart.draw(data, options);
     }
 }
+
+$('#hide-checkbox').on('change', function () {
+    $('html').toggleClass('dark');
+    $('.google-visualization-tooltip-item .news-image').toggle('dark'); 
+    $(this).parent().toggleClass('dark'); 
+}); 

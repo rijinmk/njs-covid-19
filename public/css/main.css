@@ -39,6 +39,6 @@ h6{
 .google-visualization-tooltip-item img{
     position: absolute;
     width: 100px;
-    top:0px;
-    right:0px;
+    top:-40px;
+    right:-20px;
 }

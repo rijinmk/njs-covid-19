@@ -38,8 +38,8 @@ h6{
 
 .google-visualization-tooltip-item .news-image {
     position: absolute;
-    width: 150px;
-    height:150px;
+    width: 100px;
+    height:100px;
     top:-80px;
     right:-20px;
 

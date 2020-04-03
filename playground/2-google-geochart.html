@@ -8,7 +8,7 @@
         let covid;
         let news = {};
         $.get({
-            url: 'http://localhost:3000/covid',
+            url: '/covid',
             success: (data) => {
                 covid = data.data;
                 let countries = data.countries;
@@ -19,7 +19,7 @@
                 for (let i in countries) {
                     whenCalls += `
                         $.get({
-                            url: "http://localhost:3000/news?country=${countries[i]}",
+                            url: "/news?country=${countries[i]}",
                             success: (data) => {
                                 try{
                                     news["${countries[i]}"] = {img: data[0].urlToImage, desc:data[0].title};

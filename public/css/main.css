@@ -31,3 +31,14 @@ h6{
     /* height: 46px; */
     opacity: 0.1;
 }
+
+.google-visualization-tooltip-item {
+    position: relative;
+}
+
+.google-visualization-tooltip-item img{
+    position: absolute;
+    width: 100px;
+    top:0px;
+    right:0px;
+}

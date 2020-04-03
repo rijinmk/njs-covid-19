@@ -46,6 +46,7 @@ function renderMaps(covid) {
         console.log(covid[i]); 
         covid[i][2] = `<h5>Infected: ${covid[i][1]}</h5>`;
         covid[i][2] += `<p>${news[covid[i][0]].desc}</p>`;
+        covid[i][2] += `<img src="${news[covid[i][0]].img}"/>`;
     }
     google.charts.load('current', {
         'packages': ['geochart'],

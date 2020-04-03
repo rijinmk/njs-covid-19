@@ -36,9 +36,13 @@ h6{
     position: relative;
 }
 
-.google-visualization-tooltip-item img{
+.google-visualization-tooltip-item news-image {
     position: absolute;
-    width: 100px;
-    top:-40px;
+    width: 150px;
+    height:150px;
+    top:-80px;
     right:-20px;
+
+    background-position: center center;
+    background-size: cover;
 }

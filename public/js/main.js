@@ -42,12 +42,14 @@ function renderMaps(covid) {
     console.log("------------------------------------");
     console.log(news);
     console.log("------------------------------------");
+    
     for (let i = 1; i < covid.length - 1; i++) {
         console.log(covid[i]); 
-        covid[i][2] = `<h5>Infected: ${covid[i][1]}</h5>`;
-        covid[i][2] += `<p>${news[covid[i][0]].desc}</p>`;
-        covid[i][2] += `<img src="${news[covid[i][0]].img}"/>`;
+        covid[i][2] = `<div class="tool-top-outer"><h5>Infected: ${covid[i][1]}</h5>`;
+        covid[i][2] += `<div class="news-image" style="background-image:url(${news[covid[i][0]].img});"></div>`;
+        covid[i][2] += `<p>${news[covid[i][0]].desc}</p></div>`;
     }
+
     google.charts.load('current', {
         'packages': ['geochart'],
         // Note: you will need to get a mapsApiKey for your project.

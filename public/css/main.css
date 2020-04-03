@@ -58,12 +58,12 @@ h6{
 }
 
 .google-visualization-tooltip-item .news-image.toggle{
-    filter: invert(0);
+    filter: invert(1);
 }
 
 /* Toggle Switch */
 .wrapper-toggle.dark{
-    filter:invert(0);
+    filter:invert(1);
 }
 
 #hide-checkbox {

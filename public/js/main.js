@@ -1,6 +1,6 @@
 // Toggle Switch
-const wrapper = document.querySelector('.wrapper');
-const para = document.querySelector('p')
+let wrapper = document.querySelector('.wrapper');
+let para = document.querySelector('p')
 
 wrapper.addEventListener('change', function (e) {
     if (e.target.checked) {

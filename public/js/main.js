@@ -9,13 +9,14 @@ $.get({
 
         let whenCalls = ``
 
+        let rn = Math.floor(Math.random() * 10); 
         for (let i in countries) {
             whenCalls += `
                         $.get({
                             url: "/news?country=${countries[i]}",
                             success: (data) => {
                                 try{
-                                    news["${countries[i]}"] = {img: data[0].urlToImage, desc:data[${Math.floor(Math.random() * 10)}].description};
+                                    news["${countries[i]}"] = {img: data[${rn}].urlToImage, desc:data[${rn}].description};
                                 }catch(e){
                                     news["${countries[i]}"] = "";
                                 }

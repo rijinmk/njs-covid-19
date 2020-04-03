@@ -5,7 +5,7 @@ const news = require('./utils/news');
 var cors = require('cors');
 
 const app = express();
-const PORT = 3000 || process.env.PORT; 
+const PORT = process.env.PORT || 3000; 
 
 // Public folder
 app.use(express.static('public'));

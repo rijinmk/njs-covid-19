@@ -1,19 +1,3 @@
-// Toggle Switch
-let wrapper = document.querySelector('.wrapper');
-let para = document.querySelector('p')
-
-wrapper.addEventListener('change', function (e) {
-    if (e.target.checked) {
-        para.classList.add('morning');
-        para.textContent = 'Morning, Sunshine!';
-        $('html').removeClass('dark');
-    } else {
-        para.classList.remove('morning');
-        para.textContent = 'Good Night!';
-        $('html').addClass('dark');
-    }
-})
-
 let covid;
 let news = {};
 $.get({

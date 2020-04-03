@@ -59,8 +59,8 @@ h6{
     position: relative;
     cursor: pointer;
     display: inline-block;
-    width: 200px;
-    height: 100px;
+    width: 65px;
+    height: 42px;
     background: #211042;
     border-radius: 50px;
     transition: 500ms;
@@ -72,8 +72,8 @@ h6{
     display: inline-block;
     top: 7px;
     left: 6px;
-    width: 86px;
-    height: 86px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     background: #FAEAF1;
     overflow: hidden;

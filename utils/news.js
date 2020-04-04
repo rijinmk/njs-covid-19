@@ -47,7 +47,11 @@ let news = async (country, callback) => {
     }else{
         console.log(`File exists, Sending the JSON file`);
         let country_news = fs.readFileSync(country_news_today_file).toString();
-        callback(null, JSON.parse(country_news)); 
+        try{
+            callback(null, JSON.parse(country_news)); 
+        }catch(e){
+            callback(null, {}); 
+        }
     }
 
 }

@@ -19,7 +19,7 @@
   "homepage": "https://github.com/rijinmk/njs-covid-19#readme",
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "hbs": "^4.1.0",
     "request": "^2.88.2",
     "requests": "^0.3.0",
